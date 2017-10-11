@@ -133,7 +133,10 @@ typedef enum
     BC_UART_EVENT_ASYNC_READ_DATA = 1,
 
     //! @brief Event is timeout
-    BC_UART_EVENT_ASYNC_READ_TIMEOUT = 2
+    BC_UART_EVENT_ASYNC_READ_TIMEOUT = 2,
+
+    //! @brief Event is end received
+    BC_UART_EVENT_ASYNC_READ_WATCH = 3
 
 } bc_uart_event_t;
 
@@ -204,6 +207,28 @@ bool bc_uart_async_read_cancel(bc_uart_channel_t channel);
 //! @return Number of received bytes
 
 size_t bc_uart_async_read(bc_uart_channel_t channel, void *buffer, size_t length);
+
+//! @brief Set watched character (that cause event if is received)
+//! @param[in] character Watched character
+//! @param[in] enable Enable watching
+
+void bc_uart_async_read_watch(bc_uart_channel_t channel, char character, bool enable);
+
+//! @brief Get number of received watched chars
+//! @return Number of received watched bytes
+
+unsigned int bc_uart_async_read_watch_get_count(bc_uart_channel_t channel);
+
+//! @brief Get line from UART buffer
+//! @param[in] channel UART channel
+//! @param[in] buffer Pointer to buffer
+//! @param[in] max_len Maximum length of received line
+//! @param[in] begin The initial character of the line
+//! @param[in] end The ending character of the line
+//! @return true On success
+//! @return false On failure (no such line received, or max_len is not enough space)
+
+bool bc_uart_async_read_watch_get_line(bc_uart_channel_t channel, char *buffer, size_t max_len, char begin, char end);
 
 //! @}
 

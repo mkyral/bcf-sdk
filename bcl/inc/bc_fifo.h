@@ -32,6 +32,20 @@ typedef struct
 
 void bc_fifo_init(bc_fifo_t *fifo, void *buffer, size_t size);
 
+//! @brief Clear FIFO buffer
+//! @param[in] fifo FIFO instance
+
+void bc_fifo_clear(bc_fifo_t *fifo);
+
+//! @brief Clear FIFO buffer
+//! @param[in] fifo FIFO instance
+//! @param[out] buffer Pointer to buffer where line will be copied to
+//! @param[in] max_len Maximum length of received line
+//! @param[in] begin The character that the string starts with
+//! @param[in] end The character that the string ends with
+
+bool bc_fifo_read_line(bc_fifo_t *fifo, void *buffer, size_t max_len, char begin, char end);
+
 //! @brief Write data to FIFO
 //! @param[in] fifo FIFO instance
 //! @param[in] buffer Pointer to buffer from which data will be written

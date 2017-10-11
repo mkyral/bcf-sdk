@@ -9,6 +9,56 @@ void bc_fifo_init(bc_fifo_t *fifo, void *buffer, size_t size)
     fifo->tail = 0;
 }
 
+void bc_fifo_clear(bc_fifo_t *fifo)
+{
+    fifo->head = 0;
+    fifo->tail = 0;
+}
+
+bool bc_fifo_read_line(bc_fifo_t *fifo, void *buffer, size_t max_len, char begin, char end)
+{
+    char character, *p = buffer;
+    bool begin_found = false;
+    size_t n;
+
+    while (bc_fifo_read(fifo, &character, 1) == 1)
+    {
+        if (character == begin)
+        {
+            begin_found = true;
+        }
+
+        if (begin_found)
+        {
+            if (character == begin)
+            {
+                p = buffer;
+
+                n = 0;
+            }
+
+            *p = character;
+            p++;
+            n++;
+
+            // If maximum length has been exceeded (by '\0')...
+            if (n >= max_len - 1)
+            {
+                return false;
+            }
+
+            if (character == end)
+            {
+                *p = '\0';
+
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
 size_t bc_fifo_write(bc_fifo_t *fifo, const void *buffer, size_t length)
 {
     // Disable interrupts
