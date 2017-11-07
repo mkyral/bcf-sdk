@@ -1,0 +1,7 @@
+<map id="bc_co2_sensor_measure" name="bc_co2_sensor_measure">
+<area shape="rect" id="node2" href="$group__bc__co2.html#ga39c61a0919e05cba9011c3986a588c2d" title="Request sensor calibration. " alt="" coords="224,5,400,32"/>
+<area shape="rect" id="node4" href="$group__bc__co2.html#ga6602a50a3752a425f0e104d71d8114b7" title="Set measurement interval. " alt="" coords="221,57,403,98"/>
+<area shape="rect" id="node6" href="$group__bc__module__co2.html#ga0136bbb9d299c51432b9349fe0aeb760" title="Start measurement manually. " alt="" coords="227,123,397,149"/>
+<area shape="rect" id="node3" href="$group__bc__module__co2.html#ga9781d2f6c5561afc57c726cb54f7090d" title="Request sensor calibration. " alt="" coords="453,5,632,32"/>
+<area shape="rect" id="node5" href="$group__bc__module__co2.html#ga9619f5f2db2d1463584a433c959694b1" title="Set measurement interval. " alt="" coords="451,57,635,98"/>
+</map>
